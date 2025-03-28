@@ -183,7 +183,16 @@ class _LandingScreenState extends State<LandingScreen> {
             borderRadius: LandingScreen._borderRadius,
           ),
           padding: const EdgeInsets.symmetric(vertical: 15.0, horizontal: 12.0),
-          child: const Icon(Icons.tune, color: Colors.white),
+          child: SizedBox(
+            height: 25,
+            width: 25,
+            child: IconButton(
+              icon: const Icon(Icons.tune, color: Colors.white),
+              onPressed: () => _showBottomSheet(context),
+              alignment: Alignment.center, // Centers the icon
+              padding: EdgeInsets.zero,    // Removes default padding
+            ),
+          )
         ),
       ],
     );
@@ -252,7 +261,7 @@ class _LandingScreenState extends State<LandingScreen> {
                         color: LandingScreen._greenColor,
                         fontSize: 40.0,
                         fontWeight: FontWeight.bold)),
-                Text('For The Combo Packeg', style: TextStyle(fontSize: 14.0)),
+                Text('For The Combo Package', style: TextStyle(fontSize: 14.0)),
               ],
             ),
             Image.asset('assets/images/groceries3.jpg', width: 60.0),
@@ -270,6 +279,112 @@ class _LandingScreenState extends State<LandingScreen> {
         itemCount: 4,
         itemBuilder: (context, index) => _buildDiscountCard(),
       ),
+    );
+  }
+
+  void _showBottomSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: Colors.white, // Custom background color
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+      builder: (BuildContext context) {
+        return Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Align(
+                alignment: Alignment.center,
+                child: const Text ('Filter', style: TextStyle(fontFamily: 'Manrope', fontSize: 23, fontWeight: FontWeight.bold),),
+              ),
+              const SizedBox(height: 10,),
+              const Text(
+                'Categories',
+                style: TextStyle(fontSize: 20),
+              ),
+              const SizedBox(height: 10),
+              _buildCategoryList(),
+              const SizedBox(height: 10),
+              const Text(
+                'Gender',
+                style: TextStyle(fontSize: 20),
+              ),
+            SizedBox(
+              height: 45,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: [
+                  _buildCategoryButton('All', isActive: true),
+                  _buildCategoryButton('Man'),
+                  _buildCategoryButton('Woman'),
+                ],
+              ),
+            ),
+              const SizedBox(height: 10),
+              const Text(
+                'Store By',
+                style: TextStyle(fontSize: 20),
+              ),
+              SizedBox(
+                height: 45,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    _buildCategoryButton('popular', isActive: true),
+                    _buildCategoryButton('most recent'),
+                    _buildCategoryButton('price high'),
+                  ],
+                ),
+              ),
+              const Text(
+                'Rating',
+                style: TextStyle(fontSize: 20),
+              ),
+              SizedBox(
+                height: 45,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    _buildCategoryButton( '🌟All', isActive: true),
+                    _buildCategoryButton('🌟5'),
+                    _buildCategoryButton('🌟4'),
+                    _buildCategoryButton('🌟3'),
+                    _buildCategoryButton('🌟2'),
+                    _buildCategoryButton('🌟1'),
+                  ],
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: LandingScreen._greenColor,
+                          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20)
+                      ),
+                      child: const Text('Cancel', style: TextStyle(
+                          color: Colors.white
+                      ),)
+                  ),
+                  ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: LandingScreen._greenColor,
+                          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20)
+                      ),
+                      child: const Text('Confirm', style: TextStyle(
+                        color: Colors.white
+                      ),)
+                  )
+                ],
+              )
+            ],
+          ),
+        );
+      },
     );
   }
 }
