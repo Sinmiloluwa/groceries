@@ -64,6 +64,7 @@ flutter:
     - assets/images/groceries.png
     - assets/images/groceries2.jpg
     - assets/images/groceries3.jpg
+    - assets/images/google.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -81,6 +82,7 @@ flutter:
     - family: Manrope
       fonts:
         - asset: assets/fonts/manrope.ttf
+        - asset: assets/fonts/Manrope-SemiBold.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

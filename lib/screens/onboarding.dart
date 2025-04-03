@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'home.dart';
 import 'landing.dart';
+import 'auth/signup.dart';
 
 class Onboarding extends StatefulWidget {
   const Onboarding({super.key});
@@ -85,7 +86,7 @@ class _OnboardingState extends State<Onboarding> {
                           Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const HomeScreen(),
+                              builder: (context) => const SignupScreen(),
                             ),
                           );
                         }
