@@ -41,7 +41,19 @@ class _SignupScreenState extends State<SignupScreen> {
 
             const SizedBox(height: 10),
 
-            _buildTextField(label: "Password", isPassword: true),
+            Align(
+              alignment: Alignment.bottomLeft,
+              child: Text(
+              'Password',
+              style: TextStyle(
+                fontFamily: 'Manrope',
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+              ),
+            ),
+            ),
+
+            PasswordField(),
 
             const SizedBox(height: 25),
 
